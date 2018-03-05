@@ -1,0 +1,20 @@
+{
+  "version": "0.0.1",
+  "name": "cordova-plugin-jitsi",
+  "cordova_name": "JitsiPlugin",
+  "description": "This plugin allows Jitsi Webrtc",
+  "license": "Auris",
+  "repo": "https://github.com/gaganinvic/cordova-plugin-jitsi-meet",
+  "issue": "",
+  "keywords": [],
+  "platforms": [
+    "android",
+    "ios"
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.5.0"
+    }
+  ]
+}

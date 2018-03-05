@@ -1,0 +1,47 @@
+¬<?xml version='1.0' encoding='utf-8'?>
+<plugin id='cordova-plugin-jitsi' version='0.0.1' xmlns='http://apache.org/cordova/ns/plugins/1.0' xmlns:android='http://schemas.android.com/apk/res/android'>
+	<name>JitsiPlugin</name>
+	<js-module name='JitsiPlugin' src='www/JitsiPlugin.js'>
+		<clobbers target='jitsiplugin' />
+	</js-module>
+
+
+	<platform name='android'>
+		<config-file parent='/*' target='res/xml/config.xml'>
+			<feature name='JitsiPlugin'>
+				<param name='android-package' value='com.cordova.plugin.jitsi.JitsiPlugin' />
+			</feature>
+		</config-file>
+		<config-file parent='/*' target='AndroidManifest.xml'>
+			<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+			<uses-permission android:name="android.permission.BLUETOOTH" />
+			<uses-permission android:name="android.permission.CAMERA" />
+			<uses-permission android:name="android.permission.INTERNET" />
+			<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+			<uses-permission android:name="android.permission.RECORD_AUDIO" />
+			<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+			<uses-permission android:name="android.permission.WAKE_LOCK" />
+			<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+		</config-file>
+		<source-file src='src/android/JitsiPlugin.java' target-dir='src/com/cordova/plugin/jitsi/' />
+		<framework src='src/android/jitsiplugin.gradle' custom='true' type='gradleReference' />
+	</platform>
+
+	<!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="JitsiPlugin">
+                <param name="ios-package" value="JitsiPlugin"/>
+            </feature>
+        </config-file>
+
+		<header-file src="src/ios/JitsiMeetView.h" />
+		<header-file src="src/ios/JitsiMeetViewDelegate.h" />
+        <header-file src="src/ios/JitsiPlugin.h" />
+        <source-file src="src/ios/JitsiPlugin.mm" />
+
+        <framework src="./framework/JitsiMeet.framework" custom="true" />
+        <framework src="./framework/WebRTC.framework" custom="true" />
+
+    </platform>
+</plugin>
