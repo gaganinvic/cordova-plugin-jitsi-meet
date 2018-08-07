@@ -9,16 +9,29 @@ repositories{
 }
 android {
 	compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    	buildToolsVersion "26.0.1"
     
 	defaultConfig {
 		minSdkVersion 16
 		targetSdkVersion 26
+		ndk {
+		    abiFilters 'armeabi-v7a', 'x86'
+		}
+
+		packagingOptions {
+		    // The project react-native does not provide 64-bit binaries at the
+		    // time of this writing. Unfortunately, packaging any 64-bit
+		    // binaries into the .apk will crash the app at runtime on 64-bit
+		    // platforms.
+		    exclude '/lib/mips64/**'
+		    exclude '/lib/arm64-v8a/**'
+		    exclude '/lib/x86_64/**'
+		}
 	}
 
 	dexOptions {
-        jumboMode = true
-    }
+        	jumboMode = true
+    	}
 }
 dependencies {
 
